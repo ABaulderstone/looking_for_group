@@ -10,8 +10,8 @@
       <div class="modal-body">
         <div class="errors"></div>
         <%= simple_form_for(resource_name, :url => session_path(resource_name), remote: true) do |f| %>
-          <%= f.input :email, wrapper_html: {class: "form-group"}, input_html: {class: "form-control"} %>
-          <%= f.input :password, wrapper_html: {class: "form-group"}, input_html: {class: "form-control"} %>
+          <%= f.input :email, label: "E-mail", wrapper_html: {class: "form-group"}, input_html: {class: "form-control"}, required: false %>
+          <%= f.input :password, label: "Password", wrapper_html: {class: "form-group"}, input_html: {class: "form-control"}, required: false %>
           <%= f.input :remember_me, as: :boolean %>
           <%= link_to "Forgot your password?", new_password_path(:user) %>
         </div>
