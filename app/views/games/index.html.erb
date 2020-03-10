@@ -1,2 +1,24 @@
-<h1>Games#index</h1>
-<p>Find me in app/views/games/index.html.erb</p>
+<h1> Game Time </h1>
+
+<div class='container'>
+ <div class= 'row'>
+    <%@games.each do |game|%>
+      <div class="col-sm-4">
+        <div class="card border-light">
+        <%# SHOW PHOTO METHOD IN APPLICATION HELPER %>
+          <div class="thumbnail"></div>
+          <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <h5><%= game.title %></h5>
+            </div>
+            <p class="card-text text-secondary" id="truncate"><%= game.description %></p>
+            <div class= "d-flex justify-content-between">
+              <%= link_to "show", game_path(game.id), class: "show-button" %>
+              <h5><%= "$1" %></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%end%>
+ </div>
+</div>
