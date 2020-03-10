@@ -3,5 +3,7 @@
   <%= f.input :title %>
   <%= f.input :location %>
   <%=f.association :category, as: :select%>
+  <%=f.input :capacity%>
+  <%=f.input :description%>
   <%= f.button :submit %>
 <% end %>
