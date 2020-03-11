@@ -11,7 +11,7 @@
           <div class="d-flex justify-content-between">
             <h5><%= game.title %></h5>
             </div>
-            <p class="card-text text-secondary" id="truncate"><%= game.description %></p>
+            <p class="card-text text-secondary"><%= game.description %></p>
             <div class= "d-flex justify-content-between">
               <%= link_to "show", game_path(game.id), class: "show-button" %>
               <h5><%= "$1" %></h5>

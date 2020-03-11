@@ -1,6 +1,8 @@
 class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :destroy]
   before_action :authorize_user, only: [:edit, :update, :destroy]
+  before_action :check_user, only: [:new, :edit]
+
   
   def index
     @games = Game.all
@@ -26,7 +28,6 @@ class GamesController < ApplicationController
   end 
 
   def update 
-    @game = current_user.games.find(params[:id])
     @game.update(game_params)
     
     if @game.errors.any?
@@ -65,13 +66,18 @@ class GamesController < ApplicationController
     @categories = Category.all
   end 
 
-  def set_users_game
 
+
+  def authorize_user
+    @game = current_user.games.find(params[:id]) 
+    if @game.user_id != current_user.id
+      redirect_to games_path :flasn => {:alert => "I don't think so chief"}
+    end
   end 
 
-  def authorize_user 
-    if @game.listing.user_id != current_user.id
-      redirect_to listings_path
+  def check_user
+    if !current_user
+      redirect_back(fallback_location: root_path, :flash => {:alert => "You need to be logged in to do that"})
     end
   end 
 
