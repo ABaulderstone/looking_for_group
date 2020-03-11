@@ -14,6 +14,7 @@
             <p class="card-text text-secondary"><%= game.description %></p>
             <div class= "d-flex justify-content-between">
               <%= link_to "show", game_path(game.id), class: "show-button" %>
+              <%= link_to "delete", game_path(game.id), method: 'delete' if game.user_id == current_user.id%>
               <h5><%= "$1" %></h5>
             </div>
           </div>

@@ -43,7 +43,8 @@ class GamesController < ApplicationController
   end 
 
   def destroy 
-
+    @game.delete
+    redirect_to games_path, :flash => { notice: "Deleted"}
   end 
 
   private 
@@ -71,7 +72,7 @@ class GamesController < ApplicationController
   def authorize_user
     @game = current_user.games.find(params[:id]) 
     if @game.user_id != current_user.id
-      redirect_to games_path :flasn => {:alert => "I don't think so chief"}
+      redirect_back(fallback_location: root_path, :flash => {:alert => "I don't think so cheif"})
     end
   end 
 
