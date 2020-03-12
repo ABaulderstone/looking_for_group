@@ -68,3 +68,7 @@ gem "jquery-rails", "~> 4.3"
 gem "bootstrap", "~> 4.4"
 
 gem "simple_form", "~> 5.0"
+
+gem 'font-awesome-sass', '~> 5.12.0'
+
+

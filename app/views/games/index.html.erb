@@ -10,6 +10,7 @@
           <div class="card-body">
           <div class="d-flex justify-content-between">
             <h5><%= game.title %></h5>
+            <%=icon('far', 'star')%>
             </div>
             <h6 class="card-subtitle mb-2 text-muted">Created <%=time_ago_in_words(game.created_at)%> ago</h6>
             <p class="card-text"><%= game.description %></p>
