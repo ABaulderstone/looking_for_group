@@ -12,7 +12,7 @@ class GamesController < ApplicationController
     @game = current_user.games.create(game_params)
     if @game.errors.any?
       set_categories
-      render 'new'
+      render 'new', :flash => { :alert => @game.errors.full_messages.to_sentence }
     else 
       redirect_to games_path
     end 
