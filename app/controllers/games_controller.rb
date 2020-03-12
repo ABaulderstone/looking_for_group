@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:show, :edit, :destroy]
+  before_action :set_game, only: [:show, :edit, :destroy, :favorite]
   before_action :authorize_user, only: [:edit, :update, :destroy]
   before_action :check_user, only: [:new, :edit]
 
@@ -25,6 +25,25 @@ class GamesController < ApplicationController
 
   def show 
     
+  end 
+
+  def favorite
+    type = params[:type]
+    case type 
+    when "favorite"
+      current_user.favorites << @game
+      redirect_back(fallback_location: root_path, :flash => {:notice => "Favorited #{@game.title}"})
+    
+
+    when "unfavorite"
+      current_user.favorites.delete(@game)
+      redirect_back(fallback_location: root_path, :flash => {:notice => "Unfavorited #{@game.title}"})
+
+    else
+      # Type missing, nothing happens
+      redirect_back(fallback_location: root_path, :flash => {:alert => "Something went Wrong"})
+    end
+
   end 
 
   def update 
