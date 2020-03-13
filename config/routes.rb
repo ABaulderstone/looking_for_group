@@ -10,5 +10,7 @@ get '*all', to: 'pages#not_found', constraints: lambda { |req|
   req.path.exclude? 'rails/active_storage'
 }
 
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
