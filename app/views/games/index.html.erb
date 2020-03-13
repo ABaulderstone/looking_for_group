@@ -10,17 +10,12 @@
           <div class="card-body">
           <div class="d-flex justify-content-between">
             <h5><%= game.title %></h5>
-            <%if current_user.favorite_ids.include?(game.id) %>
-            <%=link_to icon('fas', 'star'), favorite_game_path(game, type: "unfavorite"), method: :put%>
-            <%else%>
-            <%=link_to icon('far', 'star'), favorite_game_path(game, type: "favorite"), method: :put%>
-            <%end%>
+                <%=favorite_link(game)%>
             </div>
             <h6 class="card-subtitle mb-2 text-muted">Created <%=time_ago_in_words(game.created_at)%> ago</h6>
             <p class="card-text"><%= game.description %></p>
             <div class= "d-flex justify-content-between">
               <%= link_to "show", game_path(game.id), class: "show-button" %>
-              <%= link_to "delete", game_path(game.id), method: 'delete' if game.user_id == current_user.id%>
               <h5><%= "$1" %></h5>
             </div>
           </div>
