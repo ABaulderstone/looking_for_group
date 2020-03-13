@@ -4,9 +4,13 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
 }
 resources :games
+put '/games/:id/favorite', to: "games#favorite", as: 'favorite_game'
 get '/not_found', to:'pages#not_found', as: 'not_found'
 get '*all', to: 'pages#not_found', constraints: lambda { |req|
   req.path.exclude? 'rails/active_storage'
 }
+
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
